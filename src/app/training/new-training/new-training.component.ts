@@ -16,7 +16,7 @@ import { TrainingService } from '../training.service';
 })
 export class NewTrainingComponent implements OnInit {
   exercises$: Observable<Exercise[]>;
-  isLoading: Observable<boolean>;
+  isLoading$: Observable<boolean>;
 
   constructor(
     private trainingService: TrainingService,
@@ -25,7 +25,7 @@ export class NewTrainingComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isLoading = this.store.select(fromRoot.getIsLoading);
+    this.isLoading$ = this.store.select(fromRoot.getIsLoading);
     this.exercises$ = this.store.select(fromTraining.getAvailableExercises);
     this.fetchExercises();
   }
